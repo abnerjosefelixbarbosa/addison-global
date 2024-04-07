@@ -1,15 +1,18 @@
 package com.org.backendjava.interfaces;
 
-import com.org.backendjava.entities.Credentials;
-import com.org.backendjava.entities.User;
-import com.org.backendjava.entities.UserToken;
+import org.springframework.security.core.userdetails.UserDetailsService;
+
+import com.org.backendjava.dtos.requests.CredentialsRequest;
+import com.org.backendjava.dtos.requests.UserRequest;
+import com.org.backendjava.dtos.responses.UserResponse;
+import com.org.backendjava.dtos.responses.UserTokenResponse;
 import com.org.backendjava.exceptions.NotImplementedException;
 
-public interface ISyncTokenService 
+public interface ISyncTokenService extends UserDetailsService
 {
-	User authenticate(Credentials credentials);
-    UserToken requestToken(User user);
-    default UserToken issueToken(Credentials credentials) 
+	UserResponse authenticate(CredentialsRequest credentials);
+    UserTokenResponse requestToken(UserRequest user);
+    default UserTokenResponse issueToken(CredentialsRequest credentials) 
     {
         throw new NotImplementedException(); 
     }
