@@ -17,36 +17,4 @@ public class ExceptionDetails {
 	private Integer status;
 	private String message;
 	private String path;
-
-	public LocalDateTime getLocalDateTime() {
-		return localDateTime;
-	}
-
-	public void setLocalDateTime(LocalDateTime localDateTime) {
-		this.localDateTime = localDateTime;
-	}
-
-	public Integer getStatus() {
-		return status;
-	}
-
-	public void setStatus(Integer status) {
-		this.status = status;
-	}
-
-	public String getMessage() {
-		return message;
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
-	}
-
-	public String getPath() {
-		return path;
-	}
-
-	public void setPath(String path) {
-		this.path = path;
-	}
 }
