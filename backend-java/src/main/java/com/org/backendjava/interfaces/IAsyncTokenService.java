@@ -9,12 +9,12 @@ import com.org.backendjava.dtos.responses.UserResponse;
 import com.org.backendjava.dtos.responses.UserTokenResponse;
 import com.org.backendjava.exceptions.NotImplementedException;
 
-public interface IAsyncTokenService
-{
-	 CompletableFuture<UserResponse> authenticate(CredentialsRequest credentials);
-     CompletableFuture<UserTokenResponse> requestToken(UserRequest user);
-	 default Future<UserTokenResponse> issueToken(CredentialsRequest credentials) 
-	 {
-	      throw new NotImplementedException();
-	 }
+public interface IAsyncTokenService {
+	CompletableFuture<UserResponse> authenticate(CredentialsRequest credentials);
+
+	CompletableFuture<UserTokenResponse> requestToken(UserRequest user);
+
+	default Future<UserTokenResponse> issueToken(CredentialsRequest credentials) {
+		throw new NotImplementedException();
+	}
 }

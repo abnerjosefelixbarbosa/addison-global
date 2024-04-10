@@ -17,12 +17,43 @@ import jakarta.persistence.EntityNotFoundException;
 public class SyncTokenService implements ISyncTokenService {
 	@Autowired
 	private UserRepository repository;
-	
+
 	public UserResponse authenticate(CredentialsRequest request) {
 		UserResponse response = new UserResponse();
-		User user = new User(request);
+		User user = new User();
+
+		validadeAuthenticate(request);
+		user.setUser(request);
+		response.setUserResponse(repository.save(user));
+		excuteThread();
+
+		return response;
+	}
+
+	public UserTokenResponse requestToken(UserRequest request) {
+		User user = findByName(request.getUserId());
+		UserTokenResponse response = new UserTokenResponse();
+
+		response.setUserTokenResponse(user);
+		excuteThread();
+
+		return response;
+	}
+
+	private void validadeAuthenticate(CredentialsRequest request) {
+		//Pattern pattern = Pattern.compile("[A-Z]");
+		//Matcher matcher = pattern.matcher(request.getUserName());
 		
-		new Thread() {
+		//System.out.println(request.getUserName().matches("[A-Z]"));
+	
+		//if (request.getUserName().matches("[A-Z]") == false)
+			//issueToken(request);
+		if (existsByName(request.getUserName())) 
+			issueToken(request);
+	}
+
+	private void excuteThread() {
+		Thread thread = new Thread() {
 			public void run() {
 				try {
 					Thread.sleep(5000);
@@ -30,17 +61,16 @@ public class SyncTokenService implements ISyncTokenService {
 					throw new RuntimeException(e.getMessage());
 				}
 			}
-		}.start();
+		};
 		
-		response.setUserId(repository.save(user).getName());
-		return response;
+		thread.start();
 	}
 
-	public UserTokenResponse requestToken(UserRequest user) {
-		User findByName = repository.findByName(user.getUserId()).orElseThrow(() -> new EntityNotFoundException("user id not found"));
-		UserTokenResponse response = new UserTokenResponse();
-		
-		response.setToken(findByName.getName());
-		return response;
+	private User findByName(String userId) {
+		return repository.findByName(userId).orElseThrow(() -> new EntityNotFoundException("user id not found"));
+	}
+
+	private boolean existsByName(String userName) {
+		return repository.existsByName(userName);
 	}
 }

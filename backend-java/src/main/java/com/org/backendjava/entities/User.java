@@ -19,19 +19,18 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name = "user_tb")
-public class User implements Serializable
-{
+public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.UUID)
 	private String id;
 	@Column(nullable = false, unique = true)
 	private String name;
 	@Column(nullable = false, unique = true)
-    private String password;
+	private String password;
 	
-	public User(CredentialsRequest request) {
+	public void setUser(CredentialsRequest request) {
 		this.name = request.getUserName();
 		this.password = request.getPassword();
 	}

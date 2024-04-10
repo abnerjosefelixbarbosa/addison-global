@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 import com.org.backendjava.interfaces.ISimpleAsyncTokenService;
 
 @Service
-public class SimpleAsyncTokenService implements ISimpleAsyncTokenService
-{
+public class SimpleAsyncTokenService implements ISimpleAsyncTokenService {
 
 }
