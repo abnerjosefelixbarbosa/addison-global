@@ -1,17 +1,16 @@
 package com.org.backendjava.interfaces;
 
-import com.org.backendjava.dtos.requests.CredentialsRequest;
-import com.org.backendjava.dtos.requests.UserRequest;
-import com.org.backendjava.dtos.responses.UserResponse;
-import com.org.backendjava.dtos.responses.UserTokenResponse;
+import com.org.backendjava.dtos.Credentials;
+import com.org.backendjava.dtos.User;
+import com.org.backendjava.dtos.UserToken;
 import com.org.backendjava.exceptions.NotImplementedException;
 
 public interface ISyncTokenService {
-	UserResponse authenticate(CredentialsRequest credentials);
+	User authenticate(Credentials credentials);
 
-	UserTokenResponse requestToken(UserRequest user);
+	UserToken requestToken(User user);
 
-	default UserTokenResponse issueToken(CredentialsRequest credentials) {
+	default UserToken issueToken(Credentials credentials) {
 		throw new NotImplementedException("token invalid");
 	}
 }

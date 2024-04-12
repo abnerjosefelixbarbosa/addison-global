@@ -3,18 +3,17 @@ package com.org.backendjava.interfaces;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Future;
 
-import com.org.backendjava.dtos.requests.CredentialsRequest;
-import com.org.backendjava.dtos.requests.UserRequest;
-import com.org.backendjava.dtos.responses.UserResponse;
-import com.org.backendjava.dtos.responses.UserTokenResponse;
+import com.org.backendjava.dtos.Credentials;
+import com.org.backendjava.dtos.User;
+import com.org.backendjava.dtos.UserToken;
 import com.org.backendjava.exceptions.NotImplementedException;
 
 public interface IAsyncTokenService {
-	CompletableFuture<UserResponse> authenticate(CredentialsRequest credentials);
+	CompletableFuture<User> authenticate(Credentials credentials);
 
-	CompletableFuture<UserTokenResponse> requestToken(UserRequest user);
+	CompletableFuture<UserToken> requestToken(User user);
 
-	default Future<UserTokenResponse> issueToken(CredentialsRequest credentials) {
+	default Future<UserToken> issueToken(Credentials credentials) {
 		throw new NotImplementedException();
 	}
 }
