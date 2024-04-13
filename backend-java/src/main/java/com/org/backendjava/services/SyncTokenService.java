@@ -1,5 +1,8 @@
 package com.org.backendjava.services;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.springframework.stereotype.Service;
 
 import com.org.backendjava.dtos.Credentials;
@@ -15,6 +18,14 @@ public class SyncTokenService extends Thread implements ISyncTokenService {
 
 	public User authenticate(Credentials credentials) {
 		User user = new User();
+		
+		String rex = "^[A-Z]+$";
+		Pattern pattern = Pattern.compile(rex);
+		Matcher matcher = pattern.matcher(credentials.getUserName());
+		
+		if (!matcher.find()) {
+			throw new RuntimeException("user name invalid");
+		}
 		
 		try {
 			user.setUser(credentials);

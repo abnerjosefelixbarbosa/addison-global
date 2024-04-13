@@ -1,5 +1,8 @@
 package com.org.backendjava.dtos;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,5 +20,12 @@ public class UserToken {
 
 	public void setUserToken(User user) {
 		this.token = user.getUserId();
+	}
+	
+	public void setUserTokenWithDate(User user) {
+		Date date = new Date(System.currentTimeMillis());
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ssz");
+		String dateFormatter = format.format(date);
+		this.token = user.getUserId() + "_" + dateFormatter;
 	}
 }
