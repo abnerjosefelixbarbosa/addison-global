@@ -6,18 +6,20 @@
 
 # project resources
 
-- Java 17.
-- Spring boot.
-- Lombok.
-- SOLID.
-- MVC.
-- Swegger 3.
+- Java 17 - used as java version for development.
+- Spring boot - used as a framework for development.
+- Lombok - used to simplify getter and setter methods. 
+- SOLID - used for development architecture.
+- MVC - used for development architecture.
+- Swegger 3 - used to document development.
 
 # project execution
 
+- use postman or the swagger interface to test the controller.
+
 ```bash
 # clone repository
-git clone https://github.com/abnerjosefelixbarbosa/challenge-back-end-hit.git
+git clone https://github.com/abnerjosefelixbarbosa/addison-global.git
 ```
 
 # author
