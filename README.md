@@ -12,6 +12,7 @@
 - SOLID - used for development architecture.
 - MVC - used for development architecture.
 - Swegger 3 - used to document development.
+- Validation - used to validate fields.
 
 # project execution
 
