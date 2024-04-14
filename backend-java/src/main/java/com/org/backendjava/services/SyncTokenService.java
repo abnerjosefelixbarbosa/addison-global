@@ -19,13 +19,7 @@ public class SyncTokenService extends Thread implements ISyncTokenService {
 	public User authenticate(Credentials credentials) {
 		User user = new User();
 		
-		String rex = "^[A-Z]+$";
-		Pattern pattern = Pattern.compile(rex);
-		Matcher matcher = pattern.matcher(credentials.getUserName());
-		
-		if (!matcher.find()) {
-			throw new RuntimeException("user name invalid");
-		}
+		validateAuthentication(credentials);
 		
 		try {
 			user.setUser(credentials);
@@ -41,5 +35,15 @@ public class SyncTokenService extends Thread implements ISyncTokenService {
 		UserToken token = new UserToken();
 		token.setUserToken(user);
 		return token;
+	}
+	
+	private void validateAuthentication(Credentials credentials) {
+		String rex = "^[A-Z]+$";
+		Pattern pattern = Pattern.compile(rex);
+		Matcher matcher = pattern.matcher(credentials.getUserName());
+		
+		if (!matcher.find()) {
+			issueToken(credentials);
+		}
 	}
 }

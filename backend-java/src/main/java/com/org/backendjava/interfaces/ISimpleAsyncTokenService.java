@@ -8,6 +8,6 @@ import com.org.backendjava.exceptions.NotImplementedException;
 
 public interface ISimpleAsyncTokenService {
 	default CompletableFuture<UserToken> issueToken(Credentials credentials) {
-		throw new NotImplementedException();
+		throw new NotImplementedException("token invalid");
 	}
 }

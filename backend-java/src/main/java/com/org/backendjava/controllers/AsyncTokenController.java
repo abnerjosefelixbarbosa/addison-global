@@ -23,14 +23,14 @@ public class AsyncTokenController {
     private IAsyncTokenService service;
 	
 	@PostMapping("/authenticate")
-	public ResponseEntity<CompletableFuture<User>> authenticate(@Valid @RequestBody Credentials request) {
+	public ResponseEntity<User> authenticate(@Valid @RequestBody Credentials request) throws Exception {
 		CompletableFuture<User> response = service.authenticate(request);
-		return ResponseEntity.status(200).body(response);
+		return ResponseEntity.status(200).body(response.get());
 	}
 
 	@PostMapping("/request-token")
-	public ResponseEntity<CompletableFuture<UserToken>> requestToken(@Valid @RequestBody User request) {
+	public ResponseEntity<UserToken> requestToken(@Valid @RequestBody User request) throws Exception {
 		CompletableFuture<UserToken> response = service.requestToken(request);
-		return ResponseEntity.status(200).body(response);
+		return ResponseEntity.status(200).body(response.get());
 	}
 }

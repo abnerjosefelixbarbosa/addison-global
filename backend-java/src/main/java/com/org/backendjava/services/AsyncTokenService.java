@@ -20,13 +20,7 @@ public class AsyncTokenService extends Thread implements IAsyncTokenService {
 	public CompletableFuture<User> authenticate(Credentials credentials) {
 		User user = new User();
 		
-		String rex = "\\b[A-Z][a-z]*\\b";
-		Pattern pattern = Pattern.compile(rex);
-		Matcher matcher = pattern.matcher(credentials.getUserName());
-		
-		if (!matcher.find()) {
-			throw new RuntimeException("user name invalid");
-		}
+		validateAuthentication(credentials);
 		
 		try {
 			user.setUserWithDate(credentials);
@@ -42,5 +36,15 @@ public class AsyncTokenService extends Thread implements IAsyncTokenService {
 		UserToken token = new UserToken();
 		token.setUserTokenWithDate(user);
 		return CompletableFuture.completedFuture(token);
+	}
+	
+	private void validateAuthentication(Credentials credentials) {
+		String rex = "\\b[A-Z][a-z]*\\b";
+		Pattern pattern = Pattern.compile(rex);
+		Matcher matcher = pattern.matcher(credentials.getUserName());
+		
+		if (!matcher.find()) {
+			issueToken(credentials);
+		}
 	}
 }
