@@ -6,14 +6,15 @@
 
 # project resources
 
-- Java 17 - used for java version.
-- Spring boot - used for framework.
-- Lombok - used for generate getter and setter methods. 
-- SOLID - used for architecture.
-- MVC - used for architecture.
-- Swegger 3 - used for document this API.
-- Validation - used for validate fields externally.
-- Threads - used for delay process by 5000 milliseconds.
+- Java 17 - used to java version.
+- Spring boot - used to framework.
+- Lombok - used to generate getter and setter methods. 
+- SOLID - used to architecture.
+- MVC - used to architecture.
+- Swegger 3 - used to document this API.
+- Validation - used to validate fields externally.
+- Threads - used to delay process by 5000 milliseconds.
+- Junit 5 - used to unit testing.
 
 # project execution
 
