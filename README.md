@@ -6,6 +6,8 @@
 
 # project resources
 
+## backend-java
+
 - Java 17 - used to java version.
 - Spring boot - used to framework.
 - Lombok - used to generate getter and setter methods. 
@@ -14,7 +16,7 @@
 - Swegger 3 - used to document this API.
 - Validation - used to validate fields externally.
 - Threads - used to delay process by 5000 milliseconds.
-- Junit 5 - used to unit testing.
+- JUnit 5 - used to unit testing.
 
 # project execution
 
