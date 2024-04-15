@@ -14,7 +14,7 @@
 - SOLID - used to architecture.
 - MVC - used to architecture.
 - Swegger 3 - used to document this API.
-- Validation - used to validate fields externally.
+- Validation - used to validation external.
 - Threads - used to delay process by 5000 milliseconds.
 - JUnit 5 - used to unit testing.
 
